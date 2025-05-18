@@ -1,76 +1,44 @@
 package com.example.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "accounts")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true, nullable = false)
+
+    @Column(nullable = false, unique = true)
     private String username;
+
     @Column(nullable = false)
     private String password;
+
     private String role;
-    @ManyToOne
-    @JoinTable(name= "customer_id")
-    private Customer customer;
-    public Account() {
-    }
 
-    public Account(String username, String password, String role) {
-        this.username = username;
-        this.password = password;
-        this.role = role;
-    }
+    private String fullName;
 
-    public Long getId() {
-        return id;
-    }
+    private String email;
 
-    public String getUsername() {
-        return username;
-    }
+    private String image;
 
-    public String getPassword() {
-        return password;
-    }
+    private String gender;
 
-    public String getRole(String cus) {
-        return role;
-    }
+    private String address;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private String phone;
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    private Timestamp doB;
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    private boolean isDeleted = false;
 
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
-                '}';
-    }
 }
