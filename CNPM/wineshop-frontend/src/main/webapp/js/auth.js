@@ -11,6 +11,9 @@ const fetchFormData = async (url, data) => {
 
     const result = await response.json().catch(() => ({}));
 
+    console.log("Fetch response status:", response.status);
+    console.log("Fetch response body:", result);
+
     if (!response.ok) {
         const message = result?.message || "Đã xảy ra lỗi";
         throw new Error(message);
@@ -18,6 +21,7 @@ const fetchFormData = async (url, data) => {
 
     return result;
 };
+
 
 const register = async () => {
     const username = document.getElementById("regUsername")?.value?.trim();
