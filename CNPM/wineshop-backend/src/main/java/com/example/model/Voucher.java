@@ -24,3 +24,4 @@ public class Voucher {
     private Double discount;
     private String status;
     private Boolean isDeleted;
+}
